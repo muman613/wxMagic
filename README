@@ -1,0 +1,8 @@
+==============================================================================
+README
+==============================================================================
+
+wxMagic is a wxWidgets wrapper class for libmagic. libmagic is used to
+determine the file type and mime type of files.
+
+
