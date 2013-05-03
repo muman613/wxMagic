@@ -8,8 +8,8 @@
 ARCH ?= $(shell uname -m)
 DIST ?= $(shell lsb_release -cs)
 
-GPP ?= g++			# c++ compiler
-GCC ?= gcc			# c compiler
-AR  ?= ar			# archive tool
-TAR ?= tar			# tar tool
+GPP ?= g++
+GCC ?= gcc
+AR  ?= ar
+TAR ?= tar
 
