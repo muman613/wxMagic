@@ -9,7 +9,8 @@ typedef magic_t (*__magic_open)(int);
 typedef void (*__magic_close)(magic_t);
 typedef int (*__magic_load)(magic_t, const char *);
 
-typedef const char (*__magic_file)(magic_t, const char *);
+typedef const char* (*__magic_file)(magic_t, const char *);
+typedef int (*__magic_setflags)(magic_t cookie, int flags);
 
 class wxMagic {
 public:
@@ -17,6 +18,9 @@ public:
     virtual ~wxMagic();
 
     bool    IsValid();
+
+    bool    GetFileType(wxString sFilename, wxString& sType);
+    bool    GetFileMimeType(wxString sFilename, wxString& sMimeType);
 
 protected:
 
@@ -31,6 +35,7 @@ private:
     __magic_close       _magic_close;
     __magic_load        _magic_load;
     __magic_file        _magic_file;
+    __magic_setflags    _magic_setflags;
 
     wxDynamicLibrary*   m_dynLib;
 };
