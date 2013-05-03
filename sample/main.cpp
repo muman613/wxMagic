@@ -1,20 +1,26 @@
+/**
+ *  @file       main.cpp
+ */
+
 #include <wx/wx.h>
 #include "wxMagic.h"
 
-int main()
+int main(int argc, const char* argv[])
 {
     wxMagic     magic;
+
+    if (argc < 2) {
+        fprintf(stderr, "%s [files]\n",argv[0]);
+        return -1;
+    }
 
     if (magic.IsValid()) {
         wxString sFileType, sMimeType;
 
-        printf("Library is opened!\n");
-
-        if (magic.GetFileType(wxT("test.jpg"), sFileType)) {
-            printf("File type = %s\n", sFileType.c_str());
-        }
-        if (magic.GetFileMimeType(wxT("test.jpg"), sMimeType)) {
-            printf("MIME type = %s\n", sMimeType.c_str());
+        for (int i = 1 ; i < argc ; i++) {
+            if (magic.GetFileType( argv[i], sFileType)) {
+                printf("%s : %s\n", argv[i], sFileType.c_str());
+            }
         }
     }
 
