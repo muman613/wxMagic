@@ -8,7 +8,7 @@ TARGET_TYPE=exe
 include ../build/tools_env.mk
 include ../build/wxwidgets_env.mk
 
-CFLAGS+=$(WX_CFLAGS)
+CFLAGS+=$(WX_CFLAGS) -DNDEBUG=1
 LDFLAGS+=$(WX_LDFLAGS)
 
 INCLUDES=-I ../libwxmagic

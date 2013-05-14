@@ -18,8 +18,19 @@ int main(int argc, const char* argv[])
         wxString sFileType, sMimeType;
 
         for (int i = 1 ; i < argc ; i++) {
-            if (magic.GetFileType( argv[i], sFileType)) {
+            if (magic.GetFileType( argv[i], sFileType )) {
+#if wxCHECK_VERSION(2,9,4)
+                wxPrintf("%s : %s\n", argv[i], sFileType.c_str());
+#else
                 printf("%s : %s\n", argv[i], sFileType.c_str());
+#endif
+            }
+            if (magic.GetFileMimeType( argv[i], sMimeType )) {
+#if wxCHECK_VERSION(2,9,4)
+                wxPrintf("%s : %s\n", argv[i], sMimeType.c_str());
+#else
+                printf("%s : %s\n", argv[i], sMimeType.c_str());
+#endif
             }
         }
     }
